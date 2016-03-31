@@ -1,0 +1,412 @@
+/* ---------------------------------------
+
+CSS Magic
+
+Repository: https://github.com/afonsopacifer/css-magic
+Website: http://afonsopacifer.github.io/css-magic/
+Author: Afonso Pacifer (afonsopacifer.com)
+MIT License
+
+--------------------------------------- */
+
+* {
+	box-sizing: border-box;
+}
+
+html,body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background: #950015;
+  font-family: 'Roboto', sans-serif;
+	font-weight: 300;
+}
+
+.github-corner {
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+/* Top bar
+--------------------------------------- */
+.bar {
+	width: 100%;
+	background-color: #000;
+	color: #fff;
+	height: 30px;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+}
+
+.star-btn {
+	margin-left: 10px;
+}
+
+
+@media screen and (max-width: 500px) {
+	.bar {
+		font-size: 14px;
+		-webkit-box-pack: left;
+		-webkit-justify-content: left;
+		    -ms-flex-pack: left;
+		        justify-content: left;
+		padding-left: 10px;
+	}
+
+	.star-btn {
+		display: none;
+	}
+}
+
+.pulse-heart {
+  margin: 0 10px;
+  width: 10px;
+  height: 10px;
+  background-color: #e1008f;
+  position: relative;
+  display: inline-block;
+  animation: pulse .5s infinite alternate ease-in;
+}
+
+.pulse-heart:before {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #e1008f;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  content: "";
+}
+
+.pulse-heart:after {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #e1008f;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  content: "";
+}
+
+@keyframes pulse {
+    from {transform: rotate(-135deg) scale(1);}
+    to   {transform: rotate(-135deg) scale(1.2);}
+}
+
+/* Magic
+--------------------------------------- */
+
+/* text
+-------------------------------- */
+.text {
+  text-align: center;
+}
+
+.text:before {
+ color: #fff;
+ text-shadow: 3px 3px 5px rgba(0,0,0,.6);
+ font-size: 40px;
+ content: "";
+ animation: write 20s infinite;
+ font-weight: 700;
+}
+
+@media screen and (max-width: 480px) {
+.text:before {
+  font-size: 30px;
+	margin: 0 30px;
+ }
+}
+/* text animations
+-------------------------------- */
+@keyframes write {
+  0%, 30% {
+    content: "Escolha uma carta e a memorize bem.";
+  }
+
+  35%, 65% {
+    content: "Agora o CSS vai ler sua mente e retirar somente sua carta.";
+  }
+
+  70%, 100% {
+    content: "Sua carta ainda está ai?";
+  }
+
+}
+
+/* cards
+-------------------------------- */
+.table {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.card {
+  width: 200px;
+  height: 250px;
+  margin: 5px;
+  position: relative;
+  border-radius: 15px;
+}
+
+.card {
+  animation: magic 20s infinite;
+}
+
+.card:last-child {
+  animation: cardDelete 20s infinite;
+}
+
+.face {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+  background: #fff;
+  box-shadow: 3px 3px 5px rgba(0,0,0,.6);
+}
+
+.front {
+  opacity: 1;
+  animation: frontSide 20s infinite;
+  /*animation-delay: 5s; */
+}
+
+.back {
+  opacity: 0;
+  animation: backSide 20s infinite;
+  background:
+    linear-gradient(324deg, #232927 4%,   transparent 4%) -70px 43px,
+    linear-gradient( 36deg, #232927 4%,   transparent 4%) 30px 43px,
+    linear-gradient( 72deg, #e3d7bf 8.5%, transparent 8.5%) 30px 43px,
+    linear-gradient(288deg, #e3d7bf 8.5%, transparent 8.5%) -70px 43px,
+    linear-gradient(216deg, #e3d7bf 7.5%, transparent 7.5%) -70px 23px,
+    linear-gradient(144deg, #e3d7bf 7.5%, transparent 7.5%) 30px 23px,
+    linear-gradient(324deg, #232927 4%,   transparent 4%) -20px 93px,
+    linear-gradient( 36deg, #232927 4%,   transparent 4%) 80px 93px,
+    linear-gradient( 72deg, #e3d7bf 8.5%, transparent 8.5%) 80px 93px,
+    linear-gradient(288deg, #e3d7bf 8.5%, transparent 8.5%) -20px 93px,
+    linear-gradient(216deg, #e3d7bf 7.5%, transparent 7.5%) -20px 73px,
+    linear-gradient(144deg, #e3d7bf 7.5%, transparent 7.5%) 80px 73px;
+    background-color: #232927;
+    background-size: 100px 100px;
+}
+
+.magic {
+  opacity: 0;
+  animation: magicSide 20s infinite;
+}
+
+/* card animations
+-------------------------------- */
+@keyframes frontSide {
+  0%, 30%   {transform: rotateY(0deg);   opacity: 1;}
+  35%, 100% {transform: rotateY(180deg); opacity: 0;}
+}
+
+@keyframes backSide {
+  0%, 30%   {transform: rotateY(0deg);   opacity: 0;}
+  35%, 65%  {transform: rotateY(180deg); opacity: 1;}
+  70%, 100% {transform: rotateY(0deg);   opacity: 0;}
+}
+
+@keyframes magicSide {
+  0%, 65%   {transform: rotateY(180deg); opacity: 0;}
+  70%, 100% {transform: rotateY(0deg);   opacity: 1;}
+}
+
+@keyframes magic {
+  0%, 40%   {opacity: 1;}
+  45%       {opacity: 0;}
+  50%, 100% {opacity: 1;}
+}
+
+@keyframes cardDelete {
+  0%, 40%        {opacity: 1;}
+  45%, 50%, 100% {opacity: 0;}
+}
+
+/* values
+-------------------------------- */
+.face:before, .face:after {
+  position: absolute;
+  font-size: 40px;
+}
+
+.face:before {
+  top: 10px;
+  left: 10px;
+}
+
+.face:after {
+  bottom: 10px;
+  right: 10px;
+  transform: rotateY(180deg);
+}
+
+.k:before, .k:after {
+  content: "K";
+}
+
+.j:before, .j:after {
+  content: "J";
+}
+
+.q:before, .q:after {
+  content: "Q";
+}
+
+/* valuer colors
+-------------------------------- */
+.red {
+  color: red;
+}
+
+.black {
+  color: black;
+}
+
+/* suit
+-------------------------------- */
+.heart {
+  width: 25px;
+  height: 25px;
+  background: red;
+  position: relative;
+  transform: rotate(-135deg);
+  margin: 12.5px;
+}
+
+.heart:before, .heart:after {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: red;
+  position: absolute;
+  content: "";
+}
+
+.heart:before {
+  top: 12.5px;
+}
+
+.heart:after {
+  left: 12.5px;
+}
+
+.diamonds {
+  width: 0;
+	height: 0;
+	border: 20px solid transparent;
+	border-bottom: 30px solid red;
+	position: relative;
+	top: -20px;
+}
+
+.diamonds:after {
+	content: '';
+	position: absolute;
+	left: -20px; top: 30px;
+	width: 0;
+	height: 0;
+	border: 20px solid transparent;
+	border-top: 30px solid red;
+}
+
+.clubs {
+  width: 25px;
+  height: 25px;
+  background: black;
+  position: relative;
+  transform: rotate(45deg);
+  margin: 12.5px;
+  border-radius: 50%;
+}
+
+.clubs:before, .clubs:after {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: black;
+  position: absolute;
+  content: "";
+}
+
+.clubs:before {
+  top: 17px;
+}
+
+.clubs:after {
+  left: 17px;
+}
+
+.clubs-point {
+	width: 0;
+	height: 0;
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+	border-bottom: 16px solid black;
+  position: absolute;
+  bottom: -12px;
+  left: 21px;
+  transform: rotate(-45deg);
+}
+
+.spades {
+  width: 25px;
+  height: 25px;
+  background: black;
+  position: relative;
+  transform: rotate(45deg);
+  margin: 12.5px;
+}
+
+.spades:before, .spades:after {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: black;
+  position: absolute;
+  content: "";
+}
+
+.spades:before {
+  top: 12.5px;
+}
+
+.spades:after {
+  left: 12.5px;
+}
+
+.spades-triangle {
+	width: 0;
+	height: 0;
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+	border-bottom: 16px solid black;
+  position: absolute;
+  bottom: -10px;
+  left: 19px;
+  transform: rotate(-45deg);
+}
