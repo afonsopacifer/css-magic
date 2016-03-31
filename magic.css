@@ -18,10 +18,23 @@ html,body {
 }
 
 body {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   background: #950015;
   font-family: 'Roboto', sans-serif;
 	font-weight: 300;
@@ -80,7 +93,8 @@ body {
   background-color: #e1008f;
   position: relative;
   display: inline-block;
-  animation: pulse .5s infinite alternate ease-in;
+  -webkit-animation: pulse .5s infinite alternate ease-in;
+          animation: pulse .5s infinite alternate ease-in;
 }
 
 .pulse-heart:before {
@@ -105,9 +119,14 @@ body {
   content: "";
 }
 
+@-webkit-keyframes pulse {
+    from {-webkit-transform: rotate(-135deg) scale(1);transform: rotate(-135deg) scale(1);}
+    to   {-webkit-transform: rotate(-135deg) scale(1.2);transform: rotate(-135deg) scale(1.2);}
+}
+
 @keyframes pulse {
-    from {transform: rotate(-135deg) scale(1);}
-    to   {transform: rotate(-135deg) scale(1.2);}
+    from {-webkit-transform: rotate(-135deg) scale(1);transform: rotate(-135deg) scale(1);}
+    to   {-webkit-transform: rotate(-135deg) scale(1.2);transform: rotate(-135deg) scale(1.2);}
 }
 
 /* Magic
@@ -124,7 +143,8 @@ body {
  text-shadow: 3px 3px 5px rgba(0,0,0,.6);
  font-size: 40px;
  content: "";
- animation: write 20s infinite;
+ -webkit-animation: write 20s infinite;
+         animation: write 20s infinite;
  font-weight: 700;
 }
 
@@ -136,6 +156,20 @@ body {
 }
 /* text animations
 -------------------------------- */
+@-webkit-keyframes write {
+  0%, 30% {
+    content: "Escolha uma carta e a memorize bem.";
+  }
+
+  35%, 65% {
+    content: "Agora o CSS vai ler sua mente e retirar somente sua carta.";
+  }
+
+  70%, 100% {
+    content: "Sua carta ainda está ai?";
+  }
+
+}
 @keyframes write {
   0%, 30% {
     content: "Escolha uma carta e a memorize bem.";
@@ -154,8 +188,13 @@ body {
 /* cards
 -------------------------------- */
 .table {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-around;
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
   width: 100%;
 }
 
@@ -168,20 +207,31 @@ body {
 }
 
 .card {
-  animation: magic 20s infinite;
+  -webkit-animation: magic 20s infinite;
+          animation: magic 20s infinite;
 }
 
 .card:last-child {
-  animation: cardDelete 20s infinite;
+  -webkit-animation: cardDelete 20s infinite;
+          animation: cardDelete 20s infinite;
 }
 
 .face {
   width: 100%;
   height: 100%;
   position: absolute;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
   border-radius: 15px;
   background: #fff;
   box-shadow: 3px 3px 5px rgba(0,0,0,.6);
@@ -189,13 +239,28 @@ body {
 
 .front {
   opacity: 1;
-  animation: frontSide 20s infinite;
+  -webkit-animation: frontSide 20s infinite;
+          animation: frontSide 20s infinite;
   /*animation-delay: 5s; */
 }
 
 .back {
   opacity: 0;
-  animation: backSide 20s infinite;
+  -webkit-animation: backSide 20s infinite;
+          animation: backSide 20s infinite;
+  background:
+    -webkit-linear-gradient(126deg, #232927 4%,   transparent 4%) -70px 43px,
+    -webkit-linear-gradient( 54deg, #232927 4%,   transparent 4%) 30px 43px,
+    -webkit-linear-gradient( 18deg, #e3d7bf 8.5%, transparent 8.5%) 30px 43px,
+    -webkit-linear-gradient(162deg, #e3d7bf 8.5%, transparent 8.5%) -70px 43px,
+    -webkit-linear-gradient(234deg, #e3d7bf 7.5%, transparent 7.5%) -70px 23px,
+    -webkit-linear-gradient(306deg, #e3d7bf 7.5%, transparent 7.5%) 30px 23px,
+    -webkit-linear-gradient(126deg, #232927 4%,   transparent 4%) -20px 93px,
+    -webkit-linear-gradient( 54deg, #232927 4%,   transparent 4%) 80px 93px,
+    -webkit-linear-gradient( 18deg, #e3d7bf 8.5%, transparent 8.5%) 80px 93px,
+    -webkit-linear-gradient(162deg, #e3d7bf 8.5%, transparent 8.5%) -20px 93px,
+    -webkit-linear-gradient(234deg, #e3d7bf 7.5%, transparent 7.5%) -20px 73px,
+    -webkit-linear-gradient(306deg, #e3d7bf 7.5%, transparent 7.5%) 80px 73px;
   background:
     linear-gradient(324deg, #232927 4%,   transparent 4%) -70px 43px,
     linear-gradient( 36deg, #232927 4%,   transparent 4%) 30px 43px,
@@ -215,31 +280,58 @@ body {
 
 .magic {
   opacity: 0;
-  animation: magicSide 20s infinite;
+  -webkit-animation: magicSide 20s infinite;
+          animation: magicSide 20s infinite;
 }
 
 /* card animations
 -------------------------------- */
+@-webkit-keyframes frontSide {
+  0%, 30%   {-webkit-transform: rotateY(0deg);transform: rotateY(0deg);   opacity: 1;}
+  35%, 100% {-webkit-transform: rotateY(180deg);transform: rotateY(180deg); opacity: 0;}
+}
 @keyframes frontSide {
-  0%, 30%   {transform: rotateY(0deg);   opacity: 1;}
-  35%, 100% {transform: rotateY(180deg); opacity: 0;}
+  0%, 30%   {-webkit-transform: rotateY(0deg);transform: rotateY(0deg);   opacity: 1;}
+  35%, 100% {-webkit-transform: rotateY(180deg);transform: rotateY(180deg); opacity: 0;}
+}
+
+@-webkit-keyframes backSide {
+  0%, 30%   {-webkit-transform: rotateY(0deg);transform: rotateY(0deg);   opacity: 0;}
+  35%, 65%  {-webkit-transform: rotateY(180deg);transform: rotateY(180deg); opacity: 1;}
+  70%, 100% {-webkit-transform: rotateY(0deg);transform: rotateY(0deg);   opacity: 0;}
 }
 
 @keyframes backSide {
-  0%, 30%   {transform: rotateY(0deg);   opacity: 0;}
-  35%, 65%  {transform: rotateY(180deg); opacity: 1;}
-  70%, 100% {transform: rotateY(0deg);   opacity: 0;}
+  0%, 30%   {-webkit-transform: rotateY(0deg);transform: rotateY(0deg);   opacity: 0;}
+  35%, 65%  {-webkit-transform: rotateY(180deg);transform: rotateY(180deg); opacity: 1;}
+  70%, 100% {-webkit-transform: rotateY(0deg);transform: rotateY(0deg);   opacity: 0;}
+}
+
+@-webkit-keyframes magicSide {
+  0%, 65%   {-webkit-transform: rotateY(180deg);transform: rotateY(180deg); opacity: 0;}
+  70%, 100% {-webkit-transform: rotateY(0deg);transform: rotateY(0deg);   opacity: 1;}
 }
 
 @keyframes magicSide {
-  0%, 65%   {transform: rotateY(180deg); opacity: 0;}
-  70%, 100% {transform: rotateY(0deg);   opacity: 1;}
+  0%, 65%   {-webkit-transform: rotateY(180deg);transform: rotateY(180deg); opacity: 0;}
+  70%, 100% {-webkit-transform: rotateY(0deg);transform: rotateY(0deg);   opacity: 1;}
+}
+
+@-webkit-keyframes magic {
+  0%, 40%   {opacity: 1;}
+  45%       {opacity: 0;}
+  50%, 100% {opacity: 1;}
 }
 
 @keyframes magic {
   0%, 40%   {opacity: 1;}
   45%       {opacity: 0;}
   50%, 100% {opacity: 1;}
+}
+
+@-webkit-keyframes cardDelete {
+  0%, 40%        {opacity: 1;}
+  45%, 50%, 100% {opacity: 0;}
 }
 
 @keyframes cardDelete {
@@ -262,7 +354,8 @@ body {
 .face:after {
   bottom: 10px;
   right: 10px;
-  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+          transform: rotateY(180deg);
 }
 
 .k:before, .k:after {
@@ -294,7 +387,8 @@ body {
   height: 25px;
   background: red;
   position: relative;
-  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+          transform: rotate(-135deg);
   margin: 12.5px;
 }
 
@@ -339,7 +433,8 @@ body {
   height: 25px;
   background: black;
   position: relative;
-  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
   margin: 12.5px;
   border-radius: 50%;
 }
@@ -370,7 +465,8 @@ body {
   position: absolute;
   bottom: -12px;
   left: 21px;
-  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
 }
 
 .spades {
@@ -378,7 +474,8 @@ body {
   height: 25px;
   background: black;
   position: relative;
-  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
   margin: 12.5px;
 }
 
@@ -408,5 +505,6 @@ body {
   position: absolute;
   bottom: -10px;
   left: 19px;
-  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+          transform: rotate(-45deg);
 }
